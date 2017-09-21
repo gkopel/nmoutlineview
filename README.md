@@ -15,27 +15,27 @@ See example app for implementation details.
 - Implement datasource protocol methods described below.
 
 ## Requirements
-- Swift 3.1 or later
+- Swift 4.0 or later
 
 ## Datasource Methods
 
 ```swift
 /* 
-Returns the number of child items encompassed by a given item.
+Returns the number of child items encompassed by the given item.
 */
 func outlineView(_ outlineView: NMOutlineView, numberOfChildrenOfCell parentCell: NMOutlineViewCell?) -> Int  
 ```
 
 ```swift
 /*
-Returns a Boolean value that indicates whether the a given item is expandable.  
+Returns a Boolean value that indicates whether the given item is expandable.  
 */
 func outlineView(_ outlineView: NMOutlineView, isCellExpandable cell: NMOutlineViewCell) -> Bool 
 ```
 
 ```swift
 /*
-Invoked by outlineView to return the child cell object of a given parent item. 
+Invoked by outlineView to return the child cell object of the given parent item. 
 */
 func outlineView(_ outlineView: NMOutlineView, childCell index: Int, ofParentAtIndexPath parentIndexPath: IndexPath?) -> NMOutlineViewCell
 ```

@@ -69,7 +69,7 @@ class NMOutlineViewCell: UITableViewCell {
     }
     
     
-    func toggleButtonAction(sender: UIButton) {
+    @objc func toggleButtonAction(sender: UIButton) {
         if let onToggle = self.onToggle {
             onToggle(self)
             updateState(!isExpanded, animated: true)
