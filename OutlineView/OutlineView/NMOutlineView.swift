@@ -31,7 +31,7 @@ class NMOutlineView: UIView {
 
     
     // Datasource for internal tableview
-    internal var datasource: NMOutlineViewDatasource? {
+    weak var datasource: NMOutlineViewDatasource? {
         didSet {
             // Setup initial state
             if let datasource = datasource {
