@@ -91,7 +91,7 @@ class NMOutlineView: UIView {
     
     // MARK: NMOutlineView methods
     
-    public func dequeReusableCell(withIdentifier identifier: String, style: UITableViewCellStyle) -> NMOutlineViewCell {
+    public func dequeReusableCell(withIdentifier identifier: String, style: UITableViewCell.CellStyle) -> NMOutlineViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: identifier) as? NMOutlineViewCell {
             return cell
         } else {
