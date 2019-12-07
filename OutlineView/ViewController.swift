@@ -7,24 +7,19 @@
 //
 
 import UIKit
+import NMOutlineView
 
-class ViewController: UIViewController, NMOutlineViewDatasource {
+@objcMembers class ViewController: NMOutlineViewController {
     
-    @IBOutlet var outlineView: NMOutlineView!
+    dynamic var datasource: [TreeNode<[String: Any]>]?
     
-    
-    var datasource: [TreeNode<[String: Any]>]?
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    @objc override func viewDidLoad() {
         setupExampleDatasource()
-        outlineView.datasource = self
-        
+        super.viewDidLoad()
     }
     
-    override func didReceiveMemoryWarning() {
+    
+    @objc override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
@@ -33,7 +28,7 @@ class ViewController: UIViewController, NMOutlineViewDatasource {
     
     // MARK: NMOutlineView datasource
     
-    func outlineView(_ outlineView: NMOutlineView, numberOfChildrenOfCell parentCell: NMOutlineViewCell?) -> Int {
+    @objc override func outlineView(_ outlineView: NMOutlineView, numberOfChildrenOfCell parentCell: NMOutlineViewCell?) -> Int {
         
         guard let datasource = datasource else {
             return 0
@@ -47,10 +42,10 @@ class ViewController: UIViewController, NMOutlineViewDatasource {
     }
     
     
-    func outlineView(_ outlineView: NMOutlineView, childCell index: Int, ofParentAtIndexPath parentIndexPath: IndexPath?) -> NMOutlineViewCell {
+    @objc override func outlineView(_ outlineView: NMOutlineView, childCell index: Int, ofParentAtIndexPath parentIndexPath: IndexPath?) -> NMOutlineViewCell {
         
         guard let datasource = datasource else {
-            return NMOutlineViewCell()
+            return NMOutlineViewCell(style: .default, reuseIdentifier: NMOutlineView.cellIdentifier)
         }
 
         if let parentIndexPath = parentIndexPath,
@@ -63,38 +58,38 @@ class ViewController: UIViewController, NMOutlineViewDatasource {
                 
                 if childNode.children.count > 0 {
                     // Region
-                    let cell = outlineView.dequeReusableCell(withIdentifier: "RegionCell", style: .default)
-                    cell.textLabel?.font = UIFont.systemFont(ofSize: 11.0)
-                    cell.textLabel?.textColor = .gray
-                    cell.backgroundColor = UIColor(red:0.98, green:0.98, blue:0.98, alpha:1.00)
-                    
+                    var cell = outlineView.dequeReusableCell(withIdentifier: "RegionCell", style: .default) as? RegionOutlineViewCell
+                    if cell == nil {
+                        cell = RegionOutlineViewCell(style: .default, reuseIdentifier: "RegionCell")
+                    }
                     let region = childNode.value
                     let resortsCount = childNode.childCount()
                     if let name = region["name"] as? String {
-                        cell.textLabel?.text = "\(name) [\(resortsCount)]"
+                        cell!.regionName.text = "\(name)"
+                        cell!.resortsCount.text = "\(resortsCount)"
                     }
                     
                     
-                    cell.value = childNode
-                    return cell
+                    cell!.value = childNode
+                    return cell!
                 } else {
                     // Resort
-                    let cell = outlineView.dequeReusableCell(withIdentifier: "ResortCell", style: .subtitle)
-                    cell.textLabel?.font = UIFont.systemFont(ofSize: 11.0)
-                    cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 10.0)
-                    cell.detailTextLabel?.textColor = .gray
+                    var cell = outlineView.dequeReusableCell(withIdentifier: "ResortCell", style: .subtitle) as? ResortOutlineViewCell
+                    if cell == nil {
+                        cell = ResortOutlineViewCell(style: .default, reuseIdentifier: "ResortCell")
+                    }
                     
                     let resort = childNode.value
                     if let name = resort["name"] as? String {
-                        cell.textLabel?.text = name
+                        cell!.resortName.text = name
                     }
                     if let tracks = resort["tracks"] as? String {
-                        cell.detailTextLabel?.text = tracks
+                        cell!.resortDetail.text = tracks
                     }
                     
                     
-                    cell.value = childNode
-                    return cell
+                    cell!.value = childNode
+                    return cell!
                 }
             } else {
                 print("Error: no child node found")
@@ -103,28 +98,30 @@ class ViewController: UIViewController, NMOutlineViewDatasource {
             
         } else {
             // Root level -> Country
-            let cell = outlineView.dequeReusableCell(withIdentifier: "CountryCell", style: .default)
-            cell.textLabel?.font = UIFont.systemFont(ofSize: 12.0)
-            cell.textLabel?.textColor = .darkGray
-            cell.backgroundColor = UIColor(red:0.95, green:0.95, blue:0.95, alpha:1.00)
+            var cell = outlineView.dequeReusableCell(withIdentifier: "CountryCell", style: .default) as? CountryOutlineViewCell
+            if cell == nil {
+                cell = CountryOutlineViewCell(style: .default, reuseIdentifier: "CountryCell")
+            }
+
             let node = datasource[index]
             let country = node.value
             let resortsCount = node.childCount()
             if let name = country["name"] as? String {
-                cell.textLabel?.text = "\(name) [\(resortsCount)]"
+                cell!.countryName.text = "\(name)"
+                cell!.regionsCount.text = "\(resortsCount)"
                 
             }
             if let flag = country["flag"] as? String {
                 let image = UIImage(named: flag)
-                cell.imageView?.image = image
+                cell!.countryFlag.image = image
             }
-            cell.value = node
-            return cell
+            cell!.value = node
+            return cell!
         }
     }
     
     
-    func outlineView(_ outlineView: NMOutlineView, isCellExpandable cell: NMOutlineViewCell) -> Bool {
+    @objc override func outlineView(_ outlineView: NMOutlineView, isCellExpandable cell: NMOutlineViewCell) -> Bool {
         guard let node = cell.value as? TreeNode<[String: Any]> else {
             return false
         }
@@ -138,7 +135,7 @@ class ViewController: UIViewController, NMOutlineViewDatasource {
     
     
     
-    func outlineView(_ outlineView: NMOutlineView, didSelectCell cell: NMOutlineViewCell) {
+    @objc override func outlineView(_ outlineView: NMOutlineView, didSelectCell cell: NMOutlineViewCell) {
         guard let node = cell.value as? TreeNode<[String: Any]> else {
             return
         }
@@ -230,8 +227,8 @@ class ViewController: UIViewController, NMOutlineViewDatasource {
 }
 
 
-class TreeNode<T> {
-    var value: T
+@objcMembers open class TreeNode<T> {
+    dynamic var value: T
     
     weak var parent: TreeNode<T>?
     var children = [TreeNode<T>]()

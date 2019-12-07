@@ -7,18 +7,66 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		63B393781ED1BF510053E3DE /* NMOutlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B393761ED1BF510053E3DE /* NMOutlineView.swift */; };
-		63B393791ED1BF510053E3DE /* NMOutlineViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B393771ED1BF510053E3DE /* NMOutlineViewCell.swift */; };
 		63DB95351ED05FDB00BB5EDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DB95341ED05FDB00BB5EDD /* AppDelegate.swift */; };
 		63DB95371ED05FDB00BB5EDD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DB95361ED05FDB00BB5EDD /* ViewController.swift */; };
 		63DB953A1ED05FDB00BB5EDD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63DB95381ED05FDB00BB5EDD /* Main.storyboard */; };
 		63DB953C1ED05FDB00BB5EDD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63DB953B1ED05FDB00BB5EDD /* Assets.xcassets */; };
 		63DB953F1ED05FDB00BB5EDD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63DB953D1ED05FDB00BB5EDD /* LaunchScreen.storyboard */; };
+		B88A29E3239A30C9003EA22C /* NMOutlineViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88A29DE239A30C8003EA22C /* NMOutlineViewCell.swift */; };
+		B88A29E4239A30C9003EA22C /* NMOutlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88A29DF239A30C8003EA22C /* NMOutlineView.swift */; };
+		B88A29E5239A30C9003EA22C /* NMOutlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88A29E0239A30C8003EA22C /* NMOutlineViewController.swift */; };
+		B88A29E6239A30C9003EA22C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B88A29E1239A30C8003EA22C /* Assets.xcassets */; };
+		B88A29E8239A3B15003EA22C /* NMOutlineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B88A29E7239A3B15003EA22C /* NMOutlineViewController.xib */; };
+		B88A29E9239A3EAC003EA22C /* NMOutlineView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8EB142C23999A5B006D9891 /* NMOutlineView.framework */; };
+		B88A29EC239A40E5003EA22C /* NMOutlineView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8EB142C23999A5B006D9891 /* NMOutlineView.framework */; };
+		B8EB143023999A5B006D9891 /* NMOutlineView.h in Headers */ = {isa = PBXBuildFile; fileRef = B8EB142E23999A5B006D9891 /* NMOutlineView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B8EB143323999A5B006D9891 /* NMOutlineView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8EB142C23999A5B006D9891 /* NMOutlineView.framework */; };
+		B8EB143423999A5B006D9891 /* NMOutlineView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B8EB142C23999A5B006D9891 /* NMOutlineView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B8EB143F23999ACB006D9891 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8EB143E23999ACB006D9891 /* UIKit.framework */; };
+		B8EB14412399A1E6006D9891 /* CountryOutlineViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EB14402399A1E6006D9891 /* CountryOutlineViewCell.swift */; };
+		B8EB14432399A2AA006D9891 /* RegionOutlineViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EB14422399A2AA006D9891 /* RegionOutlineViewCell.swift */; };
+		B8EB14452399A2F6006D9891 /* ResortOutlineViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EB14442399A2F6006D9891 /* ResortOutlineViewCell.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		B88A29EA239A3EAC003EA22C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63DB95291ED05FDB00BB5EDD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B8EB142B23999A5B006D9891;
+			remoteInfo = NMOutlineView;
+		};
+		B88A29ED239A40E5003EA22C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63DB95291ED05FDB00BB5EDD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B8EB142B23999A5B006D9891;
+			remoteInfo = NMOutlineView;
+		};
+		B8EB143123999A5B006D9891 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63DB95291ED05FDB00BB5EDD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B8EB142B23999A5B006D9891;
+			remoteInfo = NMOutlineView;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B8EB143523999A5B006D9891 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B8EB143423999A5B006D9891 /* NMOutlineView.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		63B393761ED1BF510053E3DE /* NMOutlineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NMOutlineView.swift; path = OutlineView/NMOutlineView.swift; sourceTree = "<group>"; };
-		63B393771ED1BF510053E3DE /* NMOutlineViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NMOutlineViewCell.swift; path = OutlineView/NMOutlineViewCell.swift; sourceTree = "<group>"; };
 		63DB95311ED05FDB00BB5EDD /* OutlineView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OutlineView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63DB95341ED05FDB00BB5EDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63DB95361ED05FDB00BB5EDD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -26,6 +74,18 @@
 		63DB953B1ED05FDB00BB5EDD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63DB953E1ED05FDB00BB5EDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63DB95401ED05FDB00BB5EDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B88A29DE239A30C8003EA22C /* NMOutlineViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NMOutlineViewCell.swift; sourceTree = "<group>"; };
+		B88A29DF239A30C8003EA22C /* NMOutlineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NMOutlineView.swift; sourceTree = "<group>"; };
+		B88A29E0239A30C8003EA22C /* NMOutlineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NMOutlineViewController.swift; sourceTree = "<group>"; };
+		B88A29E1239A30C8003EA22C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B88A29E7239A3B15003EA22C /* NMOutlineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NMOutlineViewController.xib; sourceTree = "<group>"; };
+		B8EB142C23999A5B006D9891 /* NMOutlineView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NMOutlineView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8EB142E23999A5B006D9891 /* NMOutlineView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NMOutlineView.h; sourceTree = "<group>"; };
+		B8EB142F23999A5B006D9891 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B8EB143E23999ACB006D9891 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		B8EB14402399A1E6006D9891 /* CountryOutlineViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryOutlineViewCell.swift; sourceTree = "<group>"; };
+		B8EB14422399A2AA006D9891 /* RegionOutlineViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionOutlineViewCell.swift; sourceTree = "<group>"; };
+		B8EB14442399A2F6006D9891 /* ResortOutlineViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResortOutlineViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,27 +93,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8EB143323999A5B006D9891 /* NMOutlineView.framework in Frameworks */,
+				B88A29EC239A40E5003EA22C /* NMOutlineView.framework in Frameworks */,
+				B88A29E9239A3EAC003EA22C /* NMOutlineView.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B8EB142923999A5B006D9891 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8EB143F23999ACB006D9891 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6331D9641ED0D5C5000747D6 /* OutlineView */ = {
-			isa = PBXGroup;
-			children = (
-				63B393761ED1BF510053E3DE /* NMOutlineView.swift */,
-				63B393771ED1BF510053E3DE /* NMOutlineViewCell.swift */,
-			);
-			path = OutlineView;
-			sourceTree = "<group>";
-		};
 		63DB95281ED05FDB00BB5EDD = {
 			isa = PBXGroup;
 			children = (
-				6331D9641ED0D5C5000747D6 /* OutlineView */,
 				63DB95331ED05FDB00BB5EDD /* Example App */,
+				B8EB142D23999A5B006D9891 /* NMOutlineView */,
 				63DB95321ED05FDB00BB5EDD /* Products */,
+				B8EB143D23999ACA006D9891 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -61,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				63DB95311ED05FDB00BB5EDD /* OutlineView.app */,
+				B8EB142C23999A5B006D9891 /* NMOutlineView.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -68,8 +132,9 @@
 		63DB95331ED05FDB00BB5EDD /* Example App */ = {
 			isa = PBXGroup;
 			children = (
-				63DB95361ED05FDB00BB5EDD /* ViewController.swift */,
+				B8EB14462399BDD0006D9891 /* ViewCells */,
 				63DB95341ED05FDB00BB5EDD /* AppDelegate.swift */,
+				63DB95361ED05FDB00BB5EDD /* ViewController.swift */,
 				63DB95381ED05FDB00BB5EDD /* Main.storyboard */,
 				63DB953B1ED05FDB00BB5EDD /* Assets.xcassets */,
 				63DB953D1ED05FDB00BB5EDD /* LaunchScreen.storyboard */,
@@ -79,7 +144,50 @@
 			path = OutlineView;
 			sourceTree = "<group>";
 		};
+		B8EB142D23999A5B006D9891 /* NMOutlineView */ = {
+			isa = PBXGroup;
+			children = (
+				B88A29E7239A3B15003EA22C /* NMOutlineViewController.xib */,
+				B88A29E1239A30C8003EA22C /* Assets.xcassets */,
+				B88A29DF239A30C8003EA22C /* NMOutlineView.swift */,
+				B88A29DE239A30C8003EA22C /* NMOutlineViewCell.swift */,
+				B88A29E0239A30C8003EA22C /* NMOutlineViewController.swift */,
+				B8EB142E23999A5B006D9891 /* NMOutlineView.h */,
+				B8EB142F23999A5B006D9891 /* Info.plist */,
+			);
+			path = NMOutlineView;
+			sourceTree = "<group>";
+		};
+		B8EB143D23999ACA006D9891 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B8EB143E23999ACB006D9891 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B8EB14462399BDD0006D9891 /* ViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				B8EB14402399A1E6006D9891 /* CountryOutlineViewCell.swift */,
+				B8EB14442399A2F6006D9891 /* ResortOutlineViewCell.swift */,
+				B8EB14422399A2AA006D9891 /* RegionOutlineViewCell.swift */,
+			);
+			path = ViewCells;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		B8EB142723999A5B006D9891 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8EB143023999A5B006D9891 /* NMOutlineView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		63DB95301ED05FDB00BB5EDD /* OutlineView */ = {
@@ -89,15 +197,37 @@
 				63DB952D1ED05FDB00BB5EDD /* Sources */,
 				63DB952E1ED05FDB00BB5EDD /* Frameworks */,
 				63DB952F1ED05FDB00BB5EDD /* Resources */,
+				B8EB143523999A5B006D9891 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B8EB143223999A5B006D9891 /* PBXTargetDependency */,
+				B88A29EB239A3EAC003EA22C /* PBXTargetDependency */,
+				B88A29EE239A40E5003EA22C /* PBXTargetDependency */,
 			);
 			name = OutlineView;
 			productName = OutlineView;
 			productReference = 63DB95311ED05FDB00BB5EDD /* OutlineView.app */;
 			productType = "com.apple.product-type.application";
+		};
+		B8EB142B23999A5B006D9891 /* NMOutlineView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B8EB143823999A5B006D9891 /* Build configuration list for PBXNativeTarget "NMOutlineView" */;
+			buildPhases = (
+				B8EB142723999A5B006D9891 /* Headers */,
+				B8EB142823999A5B006D9891 /* Sources */,
+				B8EB142923999A5B006D9891 /* Frameworks */,
+				B8EB142A23999A5B006D9891 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NMOutlineView;
+			productName = NMOutlineView;
+			productReference = B8EB142C23999A5B006D9891 /* NMOutlineView.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -111,8 +241,13 @@
 				TargetAttributes = {
 					63DB95301ED05FDB00BB5EDD = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = R9JHXPQP3A;
+						DevelopmentTeam = 2YM2APFNTR;
 						LastSwiftMigration = 1030;
+						ProvisioningStyle = Automatic;
+					};
+					B8EB142B23999A5B006D9891 = {
+						CreatedOnToolsVersion = 11.2.1;
+						DevelopmentTeam = 2YM2APFNTR;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -131,6 +266,7 @@
 			projectRoot = "";
 			targets = (
 				63DB95301ED05FDB00BB5EDD /* OutlineView */,
+				B8EB142B23999A5B006D9891 /* NMOutlineView */,
 			);
 		};
 /* End PBXProject section */
@@ -146,6 +282,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B8EB142A23999A5B006D9891 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B88A29E8239A3B15003EA22C /* NMOutlineViewController.xib in Resources */,
+				B88A29E6239A30C9003EA22C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -153,14 +298,43 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63B393791ED1BF510053E3DE /* NMOutlineViewCell.swift in Sources */,
 				63DB95371ED05FDB00BB5EDD /* ViewController.swift in Sources */,
-				63B393781ED1BF510053E3DE /* NMOutlineView.swift in Sources */,
+				B8EB14452399A2F6006D9891 /* ResortOutlineViewCell.swift in Sources */,
+				B8EB14432399A2AA006D9891 /* RegionOutlineViewCell.swift in Sources */,
 				63DB95351ED05FDB00BB5EDD /* AppDelegate.swift in Sources */,
+				B8EB14412399A1E6006D9891 /* CountryOutlineViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B8EB142823999A5B006D9891 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B88A29E5239A30C9003EA22C /* NMOutlineViewController.swift in Sources */,
+				B88A29E3239A30C9003EA22C /* NMOutlineViewCell.swift in Sources */,
+				B88A29E4239A30C9003EA22C /* NMOutlineView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B88A29EB239A3EAC003EA22C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B8EB142B23999A5B006D9891 /* NMOutlineView */;
+			targetProxy = B88A29EA239A3EAC003EA22C /* PBXContainerItemProxy */;
+		};
+		B88A29EE239A40E5003EA22C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B8EB142B23999A5B006D9891 /* NMOutlineView */;
+			targetProxy = B88A29ED239A40E5003EA22C /* PBXContainerItemProxy */;
+		};
+		B8EB143223999A5B006D9891 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B8EB142B23999A5B006D9891 /* NMOutlineView */;
+			targetProxy = B8EB143123999A5B006D9891 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		63DB95381ED05FDB00BB5EDD /* Main.storyboard */ = {
@@ -232,7 +406,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -285,7 +459,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -296,12 +470,14 @@
 		63DB95441ED05FDB00BB5EDD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = R9JHXPQP3A;
+				DEVELOPMENT_TEAM = 2YM2APFNTR;
 				INFOPLIST_FILE = OutlineView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.netmedia-software.OutlineView";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = OutlineView;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -309,13 +485,82 @@
 		63DB95451ED05FDB00BB5EDD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = R9JHXPQP3A;
+				DEVELOPMENT_TEAM = 2YM2APFNTR;
 				INFOPLIST_FILE = OutlineView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.netmedia-software.OutlineView";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = OutlineView;
 				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		B8EB143623999A5B006D9891 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_OBJC_INTERFACE_IVARS = YES;
+				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 2YM2APFNTR;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = NMOutlineView/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.netmedia-software.NMOutlineView";
+				PRODUCT_NAME = NMOutlineView;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B8EB143723999A5B006D9891 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_OBJC_INTERFACE_IVARS = YES;
+				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 2YM2APFNTR;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = NMOutlineView/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.netmedia-software.NMOutlineView";
+				PRODUCT_NAME = NMOutlineView;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -336,6 +581,15 @@
 			buildConfigurations = (
 				63DB95441ED05FDB00BB5EDD /* Debug */,
 				63DB95451ED05FDB00BB5EDD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B8EB143823999A5B006D9891 /* Build configuration list for PBXNativeTarget "NMOutlineView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B8EB143623999A5B006D9891 /* Debug */,
+				B8EB143723999A5B006D9891 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

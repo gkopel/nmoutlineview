@@ -1,59 +1,212 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Datasource-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="OutlineView" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <viewController autoresizesArchivedViewToFullSize="NO" id="BYZ-38-t0r" customClass="ViewController" customModule="OutlineView" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8bC-Xf-vdC" customClass="NMOutlineView" customModule="NMOutlineView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rn3-NF-wLI" customClass="NMOutlineView" customModule="OutlineView">
-                                <rect key="frame" x="0.0" y="57" width="375" height="610"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Popular Ski Resorts in Europe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YLh-ZF-jYZ">
-                                <rect key="frame" x="16" y="28" width="343" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="mP5-8X-gQs"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="al0-B5-akA">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="29" shouldIndentWhileEditing="NO" reuseIdentifier="CountryCell" rowHeight="50" translatesAutoresizingMaskIntoConstraints="NO" id="UfT-88-xfY" customClass="CountryOutlineViewCell" customModule="OutlineView" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="UfT-88-xfY" translatesAutoresizingMaskIntoConstraints="NO" id="t17-UN-cvY">
+                                            <rect key="frame" x="29" y="0.0" width="346" height="50"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="3" translatesAutoresizingMaskIntoConstraints="NO" id="Suw-Wh-fVA" userLabel="Flag">
+                                                    <rect key="frame" x="10" y="14" width="38" height="25"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="France" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O0w-PS-bYZ" userLabel="CountryName">
+                                                    <rect key="frame" x="65" y="14" width="200" height="24"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="5" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MbK-y4-a3I">
+                                                    <rect key="frame" x="320" y="15" width="10.5" height="21"/>
+                                                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="MbK-y4-a3I" secondAttribute="trailing" constant="5" id="RUF-Sh-VoJ"/>
+                                                <constraint firstItem="MbK-y4-a3I" firstAttribute="centerY" secondItem="t17-UN-cvY" secondAttribute="centerY" id="xzI-gg-mkL"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="nmIndentationLevel">
+                                                <integer key="value" value="0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isExpanded" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="buttonIsHidden" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="buttonImage" value="arrowtriangle.right.fill"/>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="buttonExpandedImage" value="arrowtriangle.down.fill"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="buttonColor">
+                                                <color key="value" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="size" keyPath="buttonSize">
+                                                <size key="value" width="19" height="19"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="countryFlag" destination="Suw-Wh-fVA" id="3HJ-TF-gOQ"/>
+                                            <outlet property="countryName" destination="O0w-PS-bYZ" id="jaP-gL-Mdg"/>
+                                            <outlet property="regionsCount" destination="MbK-y4-a3I" id="yRb-tY-IQy"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="29" shouldIndentWhileEditing="NO" reuseIdentifier="RegionCell" rowHeight="50" translatesAutoresizingMaskIntoConstraints="NO" id="wYO-Iz-vEB" customClass="RegionOutlineViewCell" customModule="OutlineView" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="78" width="375" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wYO-Iz-vEB" translatesAutoresizingMaskIntoConstraints="NO" id="f7h-86-XcO">
+                                            <rect key="frame" x="58" y="0.0" width="317" height="50"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="map" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Mh5-8x-FVX">
+                                                    <rect key="frame" x="10" y="10" width="32" height="32.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <color key="tintColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Region" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xKd-jR-S9A">
+                                                    <rect key="frame" x="55" y="15" width="182" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="2" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJd-c3-Exp">
+                                                    <rect key="frame" x="289" y="15" width="10" height="21"/>
+                                                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                                    <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="gJd-c3-Exp" firstAttribute="centerY" secondItem="f7h-86-XcO" secondAttribute="centerY" id="lx0-mI-7F0"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="gJd-c3-Exp" secondAttribute="trailing" constant="5" id="qBt-rt-EKV"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="size" keyPath="buttonSize">
+                                                <size key="value" width="19" height="19"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="buttonColor">
+                                                <color key="value" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="nmIndentationLevel">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isExpanded" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="buttonIsHidden" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="buttonImage" value="arrowtriangle.right"/>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="buttonExpandedImage" value="arrowtriangle.down"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="regionName" destination="xKd-jR-S9A" id="vc7-Zz-7aM"/>
+                                            <outlet property="resortsCount" destination="gJd-c3-Exp" id="0tv-mF-t3d"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="29" shouldIndentWhileEditing="NO" reuseIdentifier="ResortCell" rowHeight="60" translatesAutoresizingMaskIntoConstraints="NO" id="OtI-sa-3uW" customClass="ResortOutlineViewCell" customModule="OutlineView" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="128" width="375" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="OtI-sa-3uW" translatesAutoresizingMaskIntoConstraints="NO" id="uD5-AX-lcj">
+                                            <rect key="frame" x="58" y="0.0" width="317" height="60"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Resort" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VQy-Xw-bZq">
+                                                    <rect key="frame" x="10" y="6" width="229" height="25"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UNV-of-9fT" userLabel="InfoButton">
+                                                    <rect key="frame" x="252" y="18.510869565231474" width="24.000000000000028" height="24"/>
+                                                    <state key="normal" image="info.circle" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="detailInfo:" destination="OtI-sa-3uW" eventType="touchUpInside" id="hcE-cV-Ckn"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ccb-Ym-3AI">
+                                                    <rect key="frame" x="10" y="32" width="229" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                    <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bso-o0-YrQ" userLabel="SearchButton">
+                                                    <rect key="frame" x="283" y="18.510869565231474" width="24" height="24"/>
+                                                    <state key="normal" image="magnifyingglass" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="search:" destination="OtI-sa-3uW" eventType="touchUpInside" id="9yF-k2-tQ9"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="bso-o0-YrQ" firstAttribute="centerY" secondItem="uD5-AX-lcj" secondAttribute="centerY" id="3CN-UQ-JHQ"/>
+                                                <constraint firstItem="bso-o0-YrQ" firstAttribute="leading" secondItem="UNV-of-9fT" secondAttribute="trailing" constant="5" id="DBh-Br-GNC"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="bso-o0-YrQ" secondAttribute="trailing" constant="5" id="tVx-Ck-cv2"/>
+                                                <constraint firstItem="UNV-of-9fT" firstAttribute="centerY" secondItem="uD5-AX-lcj" secondAttribute="centerY" id="u9t-md-OmF"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="size" keyPath="buttonSize">
+                                                <size key="value" width="19" height="19"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="nmIndentationLevel">
+                                                <integer key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="buttonIsHidden" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isExpanded" value="NO"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="resortDetail" destination="ccb-Ym-3AI" id="Z6P-Pn-Gme"/>
+                                            <outlet property="resortName" destination="VQy-Xw-bZq" id="LB6-V8-13v"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="8bC-Xf-vdC" id="agr-cJ-GMp"/>
+                                    <outlet property="delegate" destination="8bC-Xf-vdC" id="DTh-FP-UtI"/>
+                                </connections>
+                            </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Rn3-NF-wLI" secondAttribute="bottom" id="3Zh-Ai-cJj"/>
-                            <constraint firstItem="YLh-ZF-jYZ" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="8hf-hg-4uG"/>
-                            <constraint firstItem="YLh-ZF-jYZ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="AuA-WA-kwo"/>
-                            <constraint firstItem="YLh-ZF-jYZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="cy4-rx-fdo"/>
-                            <constraint firstItem="Rn3-NF-wLI" firstAttribute="top" secondItem="YLh-ZF-jYZ" secondAttribute="bottom" constant="8" id="lO9-7z-Jm9"/>
-                            <constraint firstAttribute="trailing" secondItem="Rn3-NF-wLI" secondAttribute="trailing" id="lo0-vT-51Z"/>
-                            <constraint firstItem="Rn3-NF-wLI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="mS5-Mb-TmT"/>
-                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ndM-y3-40x"/>
+                        <connections>
+                            <outlet property="datasource" destination="BYZ-38-t0r" id="njM-HX-lqr"/>
+                            <outlet property="tableView" destination="al0-B5-akA" id="rrK-su-5mt"/>
+                        </connections>
                     </view>
                     <connections>
-                        <outlet property="outlineView" destination="Rn3-NF-wLI" id="hZl-hV-aMe"/>
+                        <outlet property="outlineView" destination="8bC-Xf-vdC" id="7zI-qA-6cv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="117.59999999999999" y="123.68815592203899"/>
+            <point key="canvasLocation" x="20" y="-323.38830584707648"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="3" width="27" height="18"/>
+        <image name="arrowtriangle.down" width="26" height="26"/>
+        <image name="arrowtriangle.down.fill" width="28" height="28"/>
+        <image name="arrowtriangle.right" width="26" height="28"/>
+        <image name="arrowtriangle.right.fill" width="27" height="27"/>
+        <image name="info.circle" catalog="system" width="64" height="60"/>
+        <image name="magnifyingglass" catalog="system" width="64" height="56"/>
+        <image name="map" catalog="system" width="64" height="56"/>
+    </resources>
 </document>

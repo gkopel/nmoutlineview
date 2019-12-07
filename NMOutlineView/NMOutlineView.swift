@@ -8,30 +8,21 @@
 import UIKit
 
 
-@objc protocol NMOutlineViewDatasource {
-    func outlineView(_ outlineView: NMOutlineView, numberOfChildrenOfCell parentCell: NMOutlineViewCell?) -> Int
-    func outlineView(_ outlineView: NMOutlineView, isCellExpandable cell: NMOutlineViewCell) -> Bool
-    func outlineView(_ outlineView: NMOutlineView, childCell index: Int, ofParentAtIndexPath parentIndexPath: IndexPath?) -> NMOutlineViewCell
-    func outlineView(_ outlineView: NMOutlineView, didSelectCell cell: NMOutlineViewCell);
+@objc public protocol NMOutlineViewDatasource: NSObjectProtocol {
+    @objc func outlineView(_ outlineView: NMOutlineView, numberOfChildrenOfCell parentCell: NMOutlineViewCell?) -> Int
+    @objc func outlineView(_ outlineView: NMOutlineView, isCellExpandable cell: NMOutlineViewCell) -> Bool
+    @objc func outlineView(_ outlineView: NMOutlineView, childCell index: Int, ofParentAtIndexPath parentIndexPath: IndexPath?) -> NMOutlineViewCell
+    @objc func outlineView(_ outlineView: NMOutlineView, didSelectCell cell: NMOutlineViewCell);
 }
 
 
 // MARK: -
-class NMOutlineView: UIView {
+@IBDesignable @objcMembers open class NMOutlineView: UIView {
     
     // MARK: Properties
-    
-    // Indentation width
-    static let nmIndentationWidth = CGFloat(30.0)
-    
-    // Expand / collapse button settings
-    static let buttonSize = CGSize(width: 30.0, height: 30.0)
-    static let buttonLabel = "▷"
-    static let buttonColor = UIColor(white: 0.1, alpha: 1.0)
 
-    
     // Datasource for internal tableview
-    weak var datasource: NMOutlineViewDatasource? {
+    @IBOutlet @objc dynamic open var datasource: NMOutlineViewDatasource! {
         didSet {
             // Setup initial state
             if let datasource = datasource {
@@ -45,45 +36,64 @@ class NMOutlineView: UIView {
     }
     
     
+    // Type property
+    static public let cellIdentifier = "CellIdentifier"
+    
     // Private properties
-    static let cellIdentifier = "CellIdentifier"
-    var tableView: UITableView!
-    var tableViewDatasource = [NMItem]()
+    @IBOutlet @objc private dynamic var tableView: UITableView!
+
+    @objc dynamic private var tableViewDatasource = [NMItem]()
     
     
     
     // MARK: Initializers
     
-    func sharedInit() {
-        tableView = UITableView()
+    @objc private func sharedInit() {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .none;
+        tableView.separatorInset = .zero
         tableView.register(NMOutlineViewCell.self, forCellReuseIdentifier: NMOutlineView.cellIdentifier)
-        self.addSubview(tableView)
     }
     
-    override init(frame: CGRect) {
+    @objc public override init(frame: CGRect) {
         super.init(frame: frame)
+        tableView = UITableView(frame: frame)
+        self.addSubview(tableView)
         sharedInit()
+        let cell = NMOutlineViewCell(style: .default, reuseIdentifier: NMOutlineView.cellIdentifier)
+        tableView.addSubview(cell)
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    
+    @objc required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    
+    @objc override open func awakeFromNib() {
+        super.awakeFromNib()
+        if tableView == nil {
+            tableView = UITableView(frame: frame)
+        }
         sharedInit()
     }
     
-    
-    override func awakeFromNib() {
-        self.tableView.separatorStyle = .singleLine
-        self.tableView.separatorInset = .zero
+    @objc override open func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
+        if tableView == nil {
+            tableView = UITableView(frame: frame)
+            self.addSubview(tableView)
+        }
+        sharedInit()
+        let cell = NMOutlineViewCell(style: .default, reuseIdentifier: NMOutlineView.cellIdentifier)
+        tableView.addSubview(cell)
+        setNeedsLayout()
     }
-    
-    
     
     // MARK: Layout
     
-    override func layoutSubviews() {
+    @objc override open func layoutSubviews() {
         super.layoutSubviews()
         tableView.frame = bounds
     }
@@ -91,7 +101,7 @@ class NMOutlineView: UIView {
     
     // MARK: NMOutlineView methods
     
-    public func dequeReusableCell(withIdentifier identifier: String, style: UITableViewCell.CellStyle) -> NMOutlineViewCell {
+    @objc open func dequeReusableCell(withIdentifier identifier: String, style: UITableViewCell.CellStyle) -> NMOutlineViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: identifier) as? NMOutlineViewCell {
             return cell
         } else {
@@ -100,13 +110,22 @@ class NMOutlineView: UIView {
         }
     }
     
-    func toggleChildCellsOf(_ cell: NMOutlineViewCell, atIndex index: Int) {
+    
+    @objc open func cellAtPoint(_ point: CGPoint) -> NMOutlineViewCell? {
+        return tableView.cellForRow(at: tableView.indexPathForRow(at: point) ?? IndexPath()) as? NMOutlineViewCell
+    }
+    
+    
+    @objc open func indexPathforCell(at point:CGPoint) -> IndexPath? {
+        return tableView.indexPathForRow(at: point)
+    }
+    
+    
+    @objc open func toggleChildCellsOf(_ cell: NMOutlineViewCell, atIndex index: Int) {
         
         guard let datasource = self.datasource else {
             return
         }
-        
-        
         
         let cellItem = tableViewDatasource[index]
         
@@ -149,31 +168,36 @@ class NMOutlineView: UIView {
     }
     
     // Single item in the collection
-    final class NMItem {
-        var indexPath: IndexPath
-        var isExpanded = false
+    @objc public final class NMItem: NSObject {
+        @objc dynamic public var indexPath: IndexPath
+        @objc dynamic public var isExpanded = false
         
-        init(withIndexPath indexPath: IndexPath) {
+        @objc public init(withIndexPath indexPath: IndexPath) {
             self.indexPath = indexPath
         }
     }
+    
+    @objc public func reloadData() {
+        tableView.reloadData()
+    }
+    
 }
 
 
 // MARK: - Internal TableView datasource/delegate
 
-extension NMOutlineView: UITableViewDataSource, UITableViewDelegate {
+@objc extension NMOutlineView: UITableViewDataSource, UITableViewDelegate {
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+    @objc open func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    @objc open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableViewDatasource.count
     }
     
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    @objc open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let datasource = self.datasource else {
             print("ERROR: no NMOutlineView datasource defined.")
             return NMOutlineViewCell(style: .default, reuseIdentifier: "ErrorCell")
@@ -185,7 +209,7 @@ extension NMOutlineView: UITableViewDataSource, UITableViewDelegate {
             // Cell that has a parent
             let parentIndexPath = item.indexPath.dropLast()
             theCell = datasource.outlineView(self, childCell: childIndex, ofParentAtIndexPath: parentIndexPath)
-
+            
         } else if let rootIndex = item.indexPath.first {
             // Root level cell
             theCell = datasource.outlineView(self, childCell: rootIndex, ofParentAtIndexPath: nil)
@@ -195,9 +219,9 @@ extension NMOutlineView: UITableViewDataSource, UITableViewDelegate {
             theCell = NMOutlineViewCell(style: .default, reuseIdentifier: "ErrorCell")
         }
         
-        theCell.nmIndentationLevel = item.indexPath.count
+        theCell.nmIndentationLevel = item.indexPath.count - 1
         theCell.toggleButton.isHidden = !datasource.outlineView(self, isCellExpandable: theCell)
-        theCell.updateState(item.isExpanded, animated: false)
+        theCell.updateState(item.isExpanded)
         
         theCell.onToggle = { (sender) in
             if let toggledCellPath = self.tableView.indexPath(for: theCell) {
@@ -206,12 +230,12 @@ extension NMOutlineView: UITableViewDataSource, UITableViewDelegate {
                 print("ERROR: NMOutlineView cell path is nil")
             }
         }
-
+        
         return theCell
         
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    @objc open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let datasource = self.datasource else {
             print("ERROR: no NMOutlineView datasource defined.")
             return
