@@ -1,7 +1,0 @@
-version: "Apple Swift version 5.1.2 (swiftlang-1100.0.278 clang-1100.0.33.9)"
-options: "be538d0ddc043a0d9c018b7707a06437"
-build_time: [1575805688, 334349000]
-inputs:
-  "/Users/jvega/Dropbox/Transmission Remote/NMOutlineView/Sources/NMOutlineView/NMOutlineViewController.swift": [9223372036, 854775807]
-  "/Users/jvega/Dropbox/Transmission Remote/NMOutlineView/Sources/NMOutlineView/NMOutlineViewCell.swift": [9223372036, 854775807]
-  "/Users/jvega/Dropbox/Transmission Remote/NMOutlineView/Sources/NMOutlineView/NMOutlineView.swift": [9223372036, 854775807]
