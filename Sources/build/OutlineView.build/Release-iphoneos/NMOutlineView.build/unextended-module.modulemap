@@ -1,0 +1,10 @@
+framework module NMOutlineView {
+  umbrella header "NMOutlineView.h"
+
+  export *
+  module * { export * }
+}
+
+module NMOutlineView.__Swift {
+    exclude header "NMOutlineView-Swift.h"
+}

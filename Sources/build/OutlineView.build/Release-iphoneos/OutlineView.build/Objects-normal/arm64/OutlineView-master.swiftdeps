@@ -1,0 +1,9 @@
+version: "Apple Swift version 5.1.2 (swiftlang-1100.0.278 clang-1100.0.33.9)"
+options: "77cbe9031534a28bc8a0402665a86778"
+build_time: [1575805695, 606002000]
+inputs:
+  "/Users/jvega/Dropbox/Transmission Remote/NMOutlineView/Sources/OutlineView/ViewController.swift": [9223372036, 854775807]
+  "/Users/jvega/Dropbox/Transmission Remote/NMOutlineView/Sources/OutlineView/ViewCells/ResortOutlineViewCell.swift": [9223372036, 854775807]
+  "/Users/jvega/Dropbox/Transmission Remote/NMOutlineView/Sources/OutlineView/ViewCells/RegionOutlineViewCell.swift": [9223372036, 854775807]
+  "/Users/jvega/Dropbox/Transmission Remote/NMOutlineView/Sources/OutlineView/AppDelegate.swift": [9223372036, 854775807]
+  "/Users/jvega/Dropbox/Transmission Remote/NMOutlineView/Sources/OutlineView/ViewCells/CountryOutlineViewCell.swift": [9223372036, 854775807]
