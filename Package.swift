@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package (
     name: "NMOutlineView",
     platforms: [
-        .iOS(.v13),
+        .iOS(.v11),
         .macOS(.v10_15)
     ],
     products: [

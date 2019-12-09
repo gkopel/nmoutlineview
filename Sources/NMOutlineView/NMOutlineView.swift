@@ -111,6 +111,10 @@ import UIKit
     }
     
     
+    @objc open func locationForPress(_ sender: UILongPressGestureRecognizer) -> CGPoint {
+        return sender.location(in: self.tableView)
+    }
+    
     @objc open func cellAtPoint(_ point: CGPoint) -> NMOutlineViewCell? {
         return tableView.cellForRow(at: tableView.indexPathForRow(at: point) ?? IndexPath()) as? NMOutlineViewCell
     }
@@ -118,6 +122,12 @@ import UIKit
     
     @objc open func indexPathforCell(at point:CGPoint) -> IndexPath? {
         return tableView.indexPathForRow(at: point)
+    }
+    
+    
+    @objc open func indexPath(for cell: NMOutlineViewCell) -> IndexPath? {
+        let tableIndexPath = tableView.indexPath(for: cell)
+        return tableViewDatasource[tableIndexPath!.row].indexPath
     }
     
     
