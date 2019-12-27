@@ -15,5 +15,3 @@ FOUNDATION_EXPORT double NMOutlineViewVersionNumber;
 FOUNDATION_EXPORT const unsigned char NMOutlineViewVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <NMOutlineView/PublicHeader.h>
-
-

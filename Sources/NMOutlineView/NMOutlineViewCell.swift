@@ -5,15 +5,23 @@
 //  Copyright © 2017 Netmedia. All rights reserved.
 //
 
-#if os(iOS) || targetEnvironment(macCatalyst)
 import UIKit
-#endif
 
+@objc(NMOutlineViewCell)
 @IBDesignable @objcMembers open class NMOutlineViewCell: UITableViewCell {
-
     
     // MARK: Properties
-    @objc dynamic public var value: Any?
+    @objc dynamic public var objectValue: Any {
+        return itemValue.item
+    }
+    
+    static var observerContext = 0
+    
+    @objc dynamic internal var itemValue: NMOutlineView.NMItem! {
+        didSet {
+            itemValue.addObserver(self, forKeyPath: #keyPath(NMOutlineView.NMItem.isExpanded), options: [.new], context: &NMOutlineViewCell.observerContext)
+        }
+    }
     
     /// Expand/Collapse control
     @objc dynamic public var toggleButton: UIButton! = UIButton(type: .custom)
@@ -27,7 +35,6 @@ import UIKit
         }
     }
 
-    
     /// Cell indentation level
     @IBInspectable @objc dynamic public var nmIndentationLevel: Int = 0
     
@@ -119,7 +126,7 @@ import UIKit
         self.buttonExpandedImage = UIImage(named: "arrowtriangle.down.fill")
         self.isExpanded = false
         self.toggleButton.contentVerticalAlignment  = .center
-        self.toggleButton.contentVerticalAlignment = .center
+        self.toggleButton.contentHorizontalAlignment = .center
         self.toggleButton.addTarget(self, action: #selector(toggleButtonAction(sender:)), for: .touchUpInside)
         self.addSubview(toggleButton)
         self.contentView.frame = CGRect(x: self.indentationWidth, y: 0, width: self.bounds.size.width - self.indentationWidth, height: self.bounds.size.height)
@@ -132,20 +139,20 @@ import UIKit
     
     @objc override open func awakeFromNib() {
         super.awakeFromNib()
-        if self.buttonSize == CGSize.zero {
-            self.buttonSize = CGSize(width: 19, height: 19)
+       if self.buttonSize == CGSize.zero {
+           self.buttonSize = CGSize(width: 19, height: 19)
         }
         if self.indentationWidth == 0 {
             self.indentationWidth = 27
         }
-        if self.buttonImage == nil {
+      if self.buttonImage == nil {
             self.buttonImage = UIImage(named: "arrowtriangle.right.fill")
         }
         if self.buttonExpandedImage == nil {
             self.buttonExpandedImage = UIImage(named: "arrowtriangle.down.fill")
         }
         self.toggleButton.contentVerticalAlignment  = .center
-        self.toggleButton.contentVerticalAlignment = .center
+        self.toggleButton.contentHorizontalAlignment = .center
         self.toggleButton.addTarget(self, action: #selector(toggleButtonAction(sender:)), for: .touchUpInside)
         self.addSubview(self.toggleButton)
         self.contentView.frame = CGRect(x: self.indentationWidth, y: 0, width: self.bounds.size.width - self.indentationWidth, height: self.bounds.size.height)
@@ -168,7 +175,7 @@ import UIKit
             self.buttonExpandedImage = UIImage(named: "arrowtriangle.down.fill")
         }
         self.toggleButton.contentVerticalAlignment  = .center
-        self.toggleButton.contentVerticalAlignment = .center
+        self.toggleButton.contentHorizontalAlignment = .center
         self.toggleButton.addTarget(self, action: #selector(toggleButtonAction(sender:)), for: .touchUpInside)
         self.addSubview(self.toggleButton)
         self.contentView.frame = CGRect(x: self.indentationWidth, y: 0, width: self.bounds.size.width - self.indentationWidth, height: self.bounds.size.height)
@@ -197,24 +204,30 @@ import UIKit
     
     
     // MARK: API
-
     @objc override open func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
     
+    @objc open func update(with item: Any) {
+        fatalError("update(with:Any) method of Type NMOutlineTableViewCell must be implemented")
+    }
     
-    @objc func toggleButtonAction(sender: UIButton) {
+    
+    @IBAction @objc func toggleButtonAction(sender: UIButton) {
         if let onToggle = self.onToggle {
             onToggle(self)
-            self.updateState(!isExpanded)
         }
     }
     
-    
-    @objc func updateState(_ isExpanded: Bool) {
-        self.isExpanded = isExpanded
+    open override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if context == &NMOutlineViewCell.observerContext {
+            guard let item = object as? NMOutlineView.NMItem else { return }
+            self.isExpanded = item.isExpanded
+        }
+        
     }
+    
 }
 

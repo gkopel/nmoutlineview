@@ -5,18 +5,31 @@
 //  Created by Greg Kopel on 20.05.2017.
 //  Copyright © 2017 Netmedia. All rights reserved.
 //
-#if os(iOS) || targetEnvironment(macCatalyst)
+
 import UIKit
-#endif
 import NMOutlineView
 
+@objc(ViewController)
 @objcMembers class ViewController: NMOutlineViewController {
+    
     
     dynamic var datasource: [TreeNode<[String: Any]>]?
     
+    
+    @IBOutlet @objc dynamic override var outlineView: NMOutlineView? {
+        didSet {
+            self.view = outlineView
+        }
+    }
+    
+   
     @objc override func viewDidLoad() {
         setupExampleDatasource()
         super.viewDidLoad()
+        
+        let _ = Timer.scheduledTimer(withTimeInterval: 5, repeats: true, block: { _ in
+            self.datasource?.shuffle()
+            self.outlineView?.reloadData() })
     }
     
     
@@ -26,118 +39,84 @@ import NMOutlineView
     }
     
     
-    
     // MARK: NMOutlineView datasource
     
-    @objc override func outlineView(_ outlineView: NMOutlineView, numberOfChildrenOfCell parentCell: NMOutlineViewCell?) -> Int {
+    @objc override func outlineView(_ outlineView: NMOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
         
         guard let datasource = datasource else {
             return 0
         }
-        if let parentNode = parentCell?.value as? TreeNode<[String: Any]> {
-            return parentNode.children.count
-        } else {
-            // Top level items
+        if item == nil {
             return datasource.count
         }
+        guard let item = item as? TreeNode<[String: Any]> else { return 0 }
+        return item.childCount
     }
     
     
-    @objc override func outlineView(_ outlineView: NMOutlineView, childCell index: Int, ofParentAtIndexPath parentIndexPath: IndexPath?) -> NMOutlineViewCell {
-        
-        guard let datasource = datasource else {
-            return NMOutlineViewCell(style: .default, reuseIdentifier: NMOutlineView.cellIdentifier)
-        }
+    @objc override func outlineView(_ outlineView: NMOutlineView, cellFor item: Any) -> NMOutlineViewCell {
 
-        if let parentIndexPath = parentIndexPath,
-            let rootIndex = parentIndexPath.first {
+        if let item = item as? TreeNode<[String:Any]> {
             
-            // Item that has a parent
-            let rootNode = datasource[rootIndex]
-            if let node = rootNode.nodeAtIndexPath(parentIndexPath) {
-                let childNode = node.children[index]
-                
-                if childNode.children.count > 0 {
-                    // Region
+            if item.value.keys.contains("flag") {
+                var cell = outlineView.dequeReusableCell(withIdentifier: "CountryCell", style: .default) as? CountryOutlineViewCell
+                if cell == nil {
+                    cell = CountryOutlineViewCell(style: .default, reuseIdentifier: "CountryCell")
+                }
+                let country = item.value
+                let resortsCount = item.childCount
+                if let name = country["name"] as? String {
+                    cell!.countryName.text = "\(name)"
+                    cell!.regionsCount.text = "\(resortsCount)"
+                    
+                }
+                if let flag = country["flag"] as? String {
+                    let image = UIImage(named: flag)
+                    cell!.countryFlag.image = image
+                }
+                return cell!
+            
+            } else if item.value.keys.contains("tracks") {
+                var cell = outlineView.dequeReusableCell(withIdentifier: "ResortCell", style: .subtitle) as? ResortOutlineViewCell
+                if cell == nil {
+                    cell = ResortOutlineViewCell(style: .default, reuseIdentifier: "ResortCell")
+                }
+                let resort = item.value
+                if let name = resort["name"] as? String {
+                    cell!.resortName.text = name
+                }
+                if let tracks = resort["tracks"] as? String {
+                    cell!.resortDetail.text = tracks
+                }
+                return cell!
+            
+            }  else {
                     var cell = outlineView.dequeReusableCell(withIdentifier: "RegionCell", style: .default) as? RegionOutlineViewCell
                     if cell == nil {
                         cell = RegionOutlineViewCell(style: .default, reuseIdentifier: "RegionCell")
                     }
-                    let region = childNode.value
-                    let resortsCount = childNode.childCount()
+                    let region = item.value
+                    let resortsCount = item.childCount
                     if let name = region["name"] as? String {
                         cell!.regionName.text = "\(name)"
                         cell!.resortsCount.text = "\(resortsCount)"
                     }
-                    
-                    
-                    cell!.value = childNode
                     return cell!
-                } else {
-                    // Resort
-                    var cell = outlineView.dequeReusableCell(withIdentifier: "ResortCell", style: .subtitle) as? ResortOutlineViewCell
-                    if cell == nil {
-                        cell = ResortOutlineViewCell(style: .default, reuseIdentifier: "ResortCell")
-                    }
-                    
-                    let resort = childNode.value
-                    if let name = resort["name"] as? String {
-                        cell!.resortName.text = name
-                    }
-                    if let tracks = resort["tracks"] as? String {
-                        cell!.resortDetail.text = tracks
-                    }
-                    
-                    
-                    cell!.value = childNode
-                    return cell!
-                }
-            } else {
-                print("Error: no child node found")
-                return NMOutlineViewCell()
             }
-            
-        } else {
-            // Root level -> Country
-            var cell = outlineView.dequeReusableCell(withIdentifier: "CountryCell", style: .default) as? CountryOutlineViewCell
-            if cell == nil {
-                cell = CountryOutlineViewCell(style: .default, reuseIdentifier: "CountryCell")
-            }
+        }
+        return NMOutlineViewCell(style: .default, reuseIdentifier: NMOutlineView.cellIdentifier)
+    }
+    
+    
+    @objc override func outlineView(_ outlineView: NMOutlineView, isItemExpandable item: Any) -> Bool  {
 
-            let node = datasource[index]
-            let country = node.value
-            let resortsCount = node.childCount()
-            if let name = country["name"] as? String {
-                cell!.countryName.text = "\(name)"
-                cell!.regionsCount.text = "\(resortsCount)"
-                
-            }
-            if let flag = country["flag"] as? String {
-                let image = UIImage(named: flag)
-                cell!.countryFlag.image = image
-            }
-            cell!.value = node
-            return cell!
-        }
+        guard let item = item as? TreeNode<[String:Any]> else { return false }
+        return item.childCount > 0
     }
     
     
-    @objc override func outlineView(_ outlineView: NMOutlineView, isCellExpandable cell: NMOutlineViewCell) -> Bool {
-        guard let node = cell.value as? TreeNode<[String: Any]> else {
-            return false
-        }
-        
-        if node.children.count > 0 {
-            return true
-        } else {
-            return false
-        }
-    }
-    
-    
-    
-    @objc override func outlineView(_ outlineView: NMOutlineView, didSelectCell cell: NMOutlineViewCell) {
-        guard let node = cell.value as? TreeNode<[String: Any]> else {
+    @objc override func outlineView(_ outlineView: NMOutlineView, didSelect cell: NMOutlineViewCell)  {
+        guard let node = cell.objectValue as? TreeNode<[String:Any]> else {
             return
         }
         
@@ -148,7 +127,14 @@ import NMOutlineView
         
     }
     
-    
+    @objc override func outlineView(_ outlineView: NMOutlineView, child index: Int, ofItem item: Any?) -> Any {
+        guard let datasource = datasource else { return ""}
+        if item == nil {
+            return datasource[index]
+        }
+        guard let item = item as? TreeNode<[String:Any]> else { return ""}
+        return item.children[index]
+    }
     
     
     // MARK: - Example Datasource
@@ -223,20 +209,21 @@ import NMOutlineView
         
         datasource = [austria, switzerland, france, italy]
     }
-    
-    
 }
 
 
-@objcMembers open class TreeNode<T> {
+@objcMembers open class TreeNode<T>: NSObject {
+    
     dynamic var value: T
     
     weak var parent: TreeNode<T>?
     var children = [TreeNode<T>]()
     
+    
     init(value: T) {
         self.value = value
     }
+    
     
     func addChild(_ node: TreeNode<T>) {
         children.append(node)
@@ -245,27 +232,18 @@ import NMOutlineView
     
     
     func nodeAtIndexPath(_ indexPath: IndexPath) -> TreeNode<T>? {
-        if indexPath.count == 1 {
-            return self
-        } else {
-            let nextPath = indexPath.dropFirst()
-            let childNode = self.children[nextPath.first!]
-            return childNode.nodeAtIndexPath(nextPath)
+        var indexPath = indexPath
+        var childNode = self
+        while let childIndex = indexPath.popFirst() {
+            childNode = childNode.children[childIndex]
         }
+        return childNode == self ? nil : childNode
     }
     
+    
     // Counts children recursively
-    func childCount() -> Int {
-        if self.children.count > 0 {
-            var count = 0
-            for child in self.children {
-                count += child.childCount()
-            }
-            return count
-            
-        } else {
-            return 1
-        }
+    var childCount: Int {
+        return  self.children.count
     }
     
 }

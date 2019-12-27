@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="28" reuseIdentifier="nmOutlineViewCell" translatesAutoresizingMaskIntoConstraints="NO" id="2iN-MB-vSM" customClass="NMOutlineViewCell" customModule="NMOutlineView" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2iN-MB-vSM" id="r8l-7z-Hqp">
+                <rect key="frame" x="28" y="0.0" width="386" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="72c-rX-256">
+                        <rect key="frame" x="51" y="0.0" width="308" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" image="3" translatesAutoresizingMaskIntoConstraints="NO" id="jbw-O8-jds">
+                        <rect key="frame" x="8" y="13" width="27" height="18"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </imageView>
+                </subviews>
+            </tableViewCellContentView>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isExpanded" value="NO"/>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="buttonIsHidden" value="NO"/>
+                <userDefinedRuntimeAttribute type="number" keyPath="nmIndentationLevel">
+                    <integer key="value" value="0"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="size" keyPath="buttonSize">
+                    <size key="value" width="20" height="20"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="image" keyPath="buttonImage" value="arrowtriangle.right.fill"/>
+                <userDefinedRuntimeAttribute type="image" keyPath="buttonExpandedImage" value="arrowtriangle.down.fill"/>
+            </userDefinedRuntimeAttributes>
+            <point key="canvasLocation" x="47.826086956521742" y="35.491071428571423"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="3" width="27" height="18"/>
+        <image name="arrowtriangle.down.fill" width="28" height="28"/>
+        <image name="arrowtriangle.right.fill" width="27" height="27"/>
+    </resources>
+</document>

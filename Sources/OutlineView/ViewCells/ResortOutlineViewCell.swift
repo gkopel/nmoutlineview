@@ -5,16 +5,17 @@
 //  Created by  on 12/5/19.
 //  Copyright © 2019 Netmedia. All rights reserved.
 //
-#if os(iOS) || targetEnvironment(macCatalyst)
+
 import UIKit
-#endif
 import NMOutlineView
 
+@objc(ResortOutlineViewCell)
 @IBDesignable @objcMembers class ResortOutlineViewCell: NMOutlineViewCell {
 
-    @IBOutlet @objc dynamic weak var resortName: UILabel!
+
+    @IBOutlet @objc dynamic  var resortName: UILabel!
     
-    @IBOutlet @objc dynamic weak var resortDetail: UILabel!
+    @IBOutlet @objc dynamic  var resortDetail: UILabel!
 
 
     
