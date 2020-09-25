@@ -2,7 +2,7 @@ NMOutlineView: Hierarchical Menu for iOS
 ========================================
 
 ## Preview
-![NMOutlineView preview](http://netmedia-software.com/github/nmoutlineview.png)
+![NMOutlineView preview](https://netmedia.dev/images/nmoutlineview/nmoutlineview.png)
 
 ## Description
 NMOutlineView is a simple implementation of hierarchical menu for iOS. Menu items can be collapsed/expanded and are displayed on different indentation levels. NMOutlineView is internally implemented as UITableView object, it's items (cells) are subclasses of UITableViewCell class, so it's easy to customize their appearance with UITableViewCell API.
@@ -15,7 +15,7 @@ See example app for implementation details.
 - Implement datasource protocol methods described below.
 
 ## Requirements
-- Swift 4.0 or later
+- Swift 5.0 or later
 
 ## Datasource Methods
 
